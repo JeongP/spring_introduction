@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.name}"></td>
+                <td><button th:onclick="">수정</button></td>
+                <td><button th:onclick="|onDeleteClick(${member.id})|">삭제</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- /container -->
+<script>
+    const onDeleteClick = (id) => {
+        fetch(`/members/delete`, {
+            method: "POST",
+            body: id
+        })
+    }
+
+    const onUpdateClick = (member) => {
+<!--        fetch(`/members/update`, {-->
+<!--            method: "POST",-->
+<!--            body: {-->
+<!--                id: id,-->
+<!--                name: name-->
+<!--            }-->
+<!--        })-->
+    }
+</script>
+</body>
+</html>
