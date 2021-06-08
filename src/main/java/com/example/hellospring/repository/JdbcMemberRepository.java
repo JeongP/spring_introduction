@@ -48,11 +48,6 @@ public class JdbcMemberRepository implements MemberRepository{
     }
 
     @Override
-    public Member update(Member member) {
-        return null;
-    }
-
-    @Override
     public Optional<Member> findById(Long id) {
         String sql = "select * from member where id = ?";
 
@@ -141,15 +136,6 @@ public class JdbcMemberRepository implements MemberRepository{
         }
     }
 
-    @Override
-    public List<Member> deleteById(Long id) {
-        return null;
-    }
-
-    @Override
-    public List<Member> updateById(Long id, String name) {
-        return null;
-    }
     private Connection getConnection() {
         return DataSourceUtils.getConnection(dataSource);
     }

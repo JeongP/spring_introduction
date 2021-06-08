@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@Repository
+//@Repository
 public class JdbcTemplateMemberRepository implements MemberRepository{
 
     private final JdbcTemplate jdbcTemplate;
@@ -37,11 +37,6 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
     }
 
     @Override
-    public Member update(Member member) {
-        return null;
-    }
-
-    @Override
     public Optional<Member> findById(Long id) {
         List<Member> result = jdbcTemplate.query("select * from member where id = ?", memberRowMapper(), id);
         return result.stream().findAny();
@@ -56,20 +51,6 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
     @Override
     public List<Member> findAll() {
         return jdbcTemplate.query("select * from member", memberRowMapper());
-    }
-
-    @Override
-    public List<Member> deleteById(Long id) {
-        String query = "delete from member where id = " + id.toString();
-        jdbcTemplate.update(query);
-        return findAll();
-    }
-
-    @Override
-    public List<Member> updateById(Long id, String name) {
-        String query = "update member set name = " + name + " where id = " + id.toString();
-        jdbcTemplate.update(query);
-        return findAll();
     }
 
     private RowMapper<Member> memberRowMapper() {

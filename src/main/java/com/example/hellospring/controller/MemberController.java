@@ -40,13 +40,6 @@ public class MemberController {
         return "members/memberList";
     }
 
-    @PostMapping("/members/delete")
-    public String delete(@RequestBody String id) {
-        System.out.println(id);
-        memberService.deleteMember(Long.parseLong(id));
-        return "home";
-    }
-
     @PostMapping("/members/update")
     public String update(@RequestBody Object obj) {
         System.out.println(obj);

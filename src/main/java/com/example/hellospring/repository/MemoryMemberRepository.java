@@ -19,11 +19,6 @@ public class MemoryMemberRepository implements MemberRepository{
     }
 
     @Override
-    public Member update(Member member) {
-        return null;
-    }
-
-    @Override
     public Optional<Member> findById(Long id) {
         return Optional.ofNullable(store.get(id));
     }
@@ -38,16 +33,6 @@ public class MemoryMemberRepository implements MemberRepository{
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
-    }
-
-    @Override
-    public List<Member> deleteById(Long id) {
-        return findAll();
-    }
-
-    @Override
-    public List<Member> updateById(Long id, String name) {
-        return null;
     }
 
     public void clearStore() {
